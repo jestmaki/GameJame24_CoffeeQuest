@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - 
+  - Collisions
+  - Interactable
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Background
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 2426374017
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Collisions
+    uniqueID: 3825571407
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 2876375475
+    locked: 0
