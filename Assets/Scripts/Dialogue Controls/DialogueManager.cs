@@ -7,7 +7,7 @@ using System;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] GameObject dialogueBox;
+    [SerializeField] GameObject dialogueControl;
     [SerializeField] TextMeshProUGUI dialogueText;
 
     [SerializeField] int lettersPerSecond;
@@ -33,13 +33,13 @@ public class DialogueManager : MonoBehaviour
 
         OnShowDialogue?.Invoke();
         this.dialogue = dialogue;
-        dialogueBox.SetActive(true);
+        dialogueControl.SetActive(true);
         StartCoroutine(TypeDialogue(dialogue.Lines[0]));
     }
 
     public void HandleUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.Z) && !isTyping)
+        if (Input.GetKeyUp(KeyCode.E) && !isTyping)
         {
             ++currentLine;
             if (currentLine < dialogue.Lines.Count)
@@ -48,7 +48,7 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                dialogueBox.SetActive(false);
+                dialogueControl.SetActive(false);
                 currentLine = 0;
                 OnEndDialogue?.Invoke();
             }

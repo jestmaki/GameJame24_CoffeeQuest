@@ -16,15 +16,23 @@ public class ChaseAI : MonoBehaviour
 
     private Transform target;
     private Rigidbody2D rigidBody;
+
+    private Animator myAnimator;
     //private Animator anim;
     private Vector2 movement;
     public Vector3 dir;
+    //public Vector3 currentDirection;
+
+    private bool isMoving;
+    private float dirX;
+    private float dirY;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        myAnimator = GetComponent<Animator>();
         //anim = GetComponent<Animator>();
     }
 
@@ -36,8 +44,9 @@ public class ChaseAI : MonoBehaviour
         dir = target.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         dir.Normalize();
-
         movement = dir;
+
+        myAnimator.SetBool("isMoving", isMoving);
         //Debug.Log(dir);
         
     }
@@ -46,11 +55,13 @@ public class ChaseAI : MonoBehaviour
     {
         if(isFollowing && !isCollided)
         {
+            isMoving = true;
             rigidBody.MovePosition(transform.position + dir * speed * Time.deltaTime);
             //Debug.Log(dir);
         }
         else{
             //Debug.Log("Stopped!");
+            isMoving = false;
             rigidBody.velocity = Vector3.zero;
 
         }

@@ -52,7 +52,7 @@ public class PlayerScript : MonoBehaviour
             playerRB.velocity = Vector3.zero;
         }
 
-        if (Input.GetKeyDown(KeyCode.Z)) Interact();
+        if (Input.GetKeyDown(KeyCode.E)) Interact();
 
         animator.SetBool("moving", isMoving);
                 
@@ -69,7 +69,7 @@ public class PlayerScript : MonoBehaviour
         var interactPos = transform.position + facingDir;
         //Debug.DrawLine(transform.position, interactPos, Color.red, 1f);
 
-        var collider = Physics2D.OverlapCircle(interactPos, 0.2f, interactableLayer);
+        var collider = Physics2D.OverlapCircle(interactPos, 0.5f, interactableLayer);
         if (collider != null)
         {
             Debug.Log("there is an NPC here");
