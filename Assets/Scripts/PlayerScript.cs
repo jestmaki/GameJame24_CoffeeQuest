@@ -16,13 +16,20 @@ public class PlayerScript : MonoBehaviour
 
     public LayerMask interactableLayer;
 
+    public bool canMove = true;
+
+    public bool isMoving;
     //private bool isMoving;
     
     // Start is called before the first frame update
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
-
     }
 
     // Update is called once per frame
@@ -32,12 +39,22 @@ public class PlayerScript : MonoBehaviour
         moveDir.x = Input.GetAxisRaw("Horizontal");
         moveDir.y = Input.GetAxisRaw("Vertical");
 
-        if(moveDir != Vector3.zero)
+        if(moveDir != Vector3.zero && canMove)
         {
+            isMoving = true;
+            animator.SetFloat("moveX", Input.GetAxisRaw("Horizontal"));
+            animator.SetFloat("moveY", Input.GetAxisRaw("Vertical"));
             MoveCharacter();
+        }
+        else
+        {
+            isMoving = false;
+            playerRB.velocity = Vector3.zero;
         }
 
         if (Input.GetKeyDown(KeyCode.Z)) Interact();
+
+        animator.SetBool("moving", isMoving);
                 
     }
 
